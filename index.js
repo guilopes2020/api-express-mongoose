@@ -1,5 +1,8 @@
 const express = require('express')
+const { default: mongoose } = require('mongoose')
 const app = express()
+
+const Person = require('./models/Person')
 
 app.use(
     express.urlencoded({
@@ -14,4 +17,16 @@ app.get('/', (req, res) => {
     res.json({ message: 'oi express' })
 })
 
-app.listen(3000)
+mongoose.connect('mongodb://atlas-sql-65d604900f03d36e181cc950-gadmx.a.query.mongodb.net/sample_mflix?ssl=true&authSource=admin').then(() => {
+    console.log('conectamos ao mongodb')
+    app.listen(3000)
+}).catch((err) => console.log(err))
+
+
+
+
+//wmS49v6cRMXo1ToV
+
+//sample_mflix
+
+//mongodb://atlas-sql-65d604900f03d36e181cc950-gadmx.a.query.mongodb.net/sample_mflix?ssl=true&authSource=admin
